@@ -1,0 +1,36 @@
+<html>
+  <body>
+    <script>
+      const method = "get";
+      const url =
+        "http://localhost:4000/func1/get/url-param?urlParam1=100&urlParam2=param2p";
+
+      const request = new XMLHttpRequest();
+
+      request.onload = function (event) {
+        const READYSTATE_COMPLETED = 4;
+        const HTTP_STATUS_OK = 200;
+
+        if (request.readyState === READYSTATE_COMPLETED) {
+          if (request.status === HTTP_STATUS_OK) {
+            console.log("attack success");
+          } else {
+            console.log("attack failed");
+          }
+        }
+      };
+
+      request.onerror = function (event) {
+        console.log(event.type);
+      };
+
+      request.open(method, url);
+      request.setRequestHeader("Content-Type", "application/json");
+      //request.setRequestHeader("Accept-Encoding", "gzip");
+
+      //request.send(EncodeHTMLForm);
+      request.send();
+      console.log("hoge");
+    </script>
+  </body>
+</html>
